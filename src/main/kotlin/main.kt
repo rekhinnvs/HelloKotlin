@@ -6,8 +6,8 @@ fun main(args: Array<String>) {
 
     //dayOfWeek()
     //greetings(value)
-    //feedTheFish()
-    println(getFortuneCookie())
+    feedTheFish()
+    //println(getFortuneCookie())
 }
 
 fun dayOfWeek() {
@@ -27,16 +27,6 @@ fun greetings(value:Int) {
     }
 }
 
-fun getRandomDay(): String {
-    val days = listOf<String>("Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday")
-    return days[Random().nextInt(7)]
-}
-
-fun feedTheFish() {
-    val day = getRandomDay()
-    println("Today is $day")
-}
-
 fun getFortuneCookie() :String{
     val fortune = listOf<String>("You will have a great day!",
         "Things will go well for you today.",
@@ -50,4 +40,34 @@ fun getFortuneCookie() :String{
     val birthday = readLine()?.toIntOrNull()
     val fortuneNumber : Int = birthday?.mod(7) ?: 1
     return fortune[fortuneNumber]
+}
+
+fun getRandomDay(): String {
+    val days = listOf<String>("Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday","Sunday")
+    return days[Random().nextInt(7)]
+}
+
+fun feedTheFish() {
+    val day = getRandomDay()
+    //println("Today is $day")
+    val food = fishFood(day)
+    println("Today is $day and fish eat $food")
+}
+
+fun fishFood(day : String) : String {
+    return when(day) {
+        "Monday" -> "Flakes"
+        "Tuesday" -> "Redworms"
+        "Wednesday" -> "Granules"
+        "Thursday" -> "Mosquitos"
+        "Friday" -> "Plankton"
+        else -> "Fasting"
+    }
+}
+fun canAddFish(tankSize: Double, currentFish: List<Int>, fishSize: Int = 2, hasDecorations: Boolean = true): Boolean {
+        return (tankSize * if (hasDecorations) 0.8 else 1.0) >= (currentFish.sum() + fishSize)
+    }
+
+fun swim(speed: String = "fast") {
+
 }
