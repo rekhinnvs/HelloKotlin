@@ -26,10 +26,19 @@ fun main() {
     println("${spice.name} ${spice.heat}")
 
     val user = User(name="Rekhin", 32);
-    val user1 = User(age=30)
+    val user1 = User("",age=30)
     println("Name = ${user.name}, Age = ${user.age}")
 }
 
-class User(val name: String = "No Name", val age: Int) {
+class User(name: String, val age: Int) {
 
+    val name: String
+    init {
+      /*  if(name.isBlank()) {
+            this.name = "No Name"
+        }else
+            this.name = name.trim()*/
+        this.name = if (name.isBlank()) "No Name" else name.trim()
+        println("New user crated, Name: ${this.name}, Age: $age")
+    }
 }

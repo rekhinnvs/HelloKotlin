@@ -20,7 +20,7 @@ class Person (_firstName: String, _lastName:String) {
 
     fun printInfo() {
         //Check wether nickname is null
-        var nickNameToPrint = nickName?: "no nickName"
+        val nickNameToPrint = nickName?: "no nickName"
 
         println("$firstName ($nickNameToPrint) $lastName")
     }
